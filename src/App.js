@@ -41,6 +41,11 @@ function App() {
       <button onClick={fetchRandomSurahWithAyahs} disabled={loading}>
         {loading ? "Loading..." : "Fetch Random Surah"}
       </button>
+      <p style={{ marginTop: "1rem", fontStyle: "italic", color: "#555" }}>
+        ⚠️ Note: Sometimes the fetch might not work on the first try because
+        i'm using a free proxy to bypass browser security (CORS). If nothing
+        loads, just click the button again — it should work!
+      </p>
 
       {surah && (
         <div className="surah-container">
