@@ -9,9 +9,9 @@ function App() {
   const fetchRandomSurahWithAyahs = async () => {
     setLoading(true);
     try {
-      const corsProxy = "https://cors-anywhere.herokuapp.com/";
+      const corsProxy = "https://api.allorigins.win/raw?url=";
       const surahListEndpoint =
-        corsProxy + "https://api.alquran.cloud/v1/surah";
+        corsProxy + encodeURIComponent("https://api.alquran.cloud/v1/surah");
       const surahListResponse = await fetch(surahListEndpoint);
       const surahListData = await surahListResponse.json();
 
@@ -19,7 +19,10 @@ function App() {
       const randomSurah = surahs[Math.floor(Math.random() * surahs.length)];
 
       const surahDetailsEndpoint =
-        corsProxy + `https://api.alquran.cloud/v1/surah/${randomSurah.number}`;
+        corsProxy +
+        encodeURIComponent(
+          `https://api.alquran.cloud/v1/surah/${randomSurah.number}`
+        );
       const surahDetailsResponse = await fetch(surahDetailsEndpoint);
       const surahDetailsData = await surahDetailsResponse.json();
 
